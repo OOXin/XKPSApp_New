@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>img</key>
+		<string>waiting_Order</string>
+		<key>mainTitle</key>
+		<string>待接订单</string>
+		<key>subTitle</key>
+		<string>当前是否有需要配送的订单</string>
+	</dict>
+	<dict>
+		<key>img</key>
+		<string>inStoreOrder</string>
+		<key>mainTitle</key>
+		<string>驻店订单</string>
+		<key>subTitle</key>
+		<string>驻店员工的驻店订单在这里</string>
+	</dict>
+	<dict>
+		<key>img</key>
+		<string>history_Order</string>
+		<key>mainTitle</key>
+		<string>历史订单</string>
+		<key>subTitle</key>
+		<string>完成的订单都在这里</string>
+	</dict>
+	<dict>
+		<key>img</key>
+		<string>award_order</string>
+		<key>mainTitle</key>
+		<string>抽奖订单</string>
+		<key>subTitle</key>
+		<string>当前是否有抽奖订单</string>
+	</dict>
+	<dict>
+		<key>img</key>
+		<string>award_order</string>
+		<key>mainTitle</key>
+		<string>扫一扫</string>
+		<key>subTitle</key>
+		<string>点击扫一扫订单</string>
+	</dict>
+</array>
+</plist>

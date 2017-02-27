@@ -22,4 +22,7 @@ pod 'SCLAlertView-Objective-C', '~> 1.1.0'
 pod 'Shimmer', '~> 1.0.2'
 pod 'JKCategories', '~> 1.5'
 pod 'BPushSDK', '~> 1.4.8'
+pod 'AsyncDisplayKit', '~> 2.1'
+pod 'YYWebImage'
+
 end

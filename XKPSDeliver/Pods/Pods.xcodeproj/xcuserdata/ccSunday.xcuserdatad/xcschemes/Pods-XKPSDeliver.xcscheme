@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '1EF16DA754F8D69BAE8EB7B2FED25119'
+               BlueprintIdentifier = '4B10329FFE548834ACE0223D57BF308F'
                BlueprintName = 'Pods-XKPSDeliver'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'libPods-XKPSDeliver.a'>

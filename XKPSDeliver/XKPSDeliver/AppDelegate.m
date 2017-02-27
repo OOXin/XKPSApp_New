@@ -7,23 +7,100 @@
 //
 
 #import "AppDelegate.h"
-#import <BPushSDK/BPush.h>
+#import "AppDelegate+BPush.h"
+#import "AppDelegate+Umeng.h"
+#import "AppDelegate+JSPatch.h"
+#import "AppDelegate+BaiduMap.h"
+#import "XKS_TabbarController.h"
+#import "XKS_AdViewController.h"
+#import "JPFPSStatus.h"
+
 @interface AppDelegate ()
 
 @end
 
 @implementation AppDelegate
 
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+//    [self xks_setupBaiduMap];
+//    
+//    [self xks_setupJSPatch];
+//    
+//    [self xks_setupUmeng];
+//    
+//    [self xks_setupBPushWith:application and:launchOptions];
+    [self addMainWindow];
+    
+    [self addAdvertiseMentView];
+    
+#if defined(DEBUG)||defined(_DEBUG)
+    
+    [[JPFPSStatus sharedInstance] open];
+    
+#endif
+    
     return YES;
 }
+
+- (void)addMainWindow{
+   
+    XKS_TabbarController *tabBarVC = [[XKS_TabbarController alloc]init];
+    
+    tabBarVC.selectedIndex = 0;
+    
+    self.window.rootViewController = tabBarVC;
+    
+    [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
+}
+
+- (void)addAdvertiseMentView{
+    UIViewController *rootViewController = self.window.rootViewController;
+    XKS_AdViewController *launchController = [[XKS_AdViewController alloc]init];
+    [rootViewController addChildViewController:launchController];
+    launchController.view.frame = rootViewController.view.frame;
+    [rootViewController.view addSubview:launchController.view];
+}
+
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo{
+    
+//    [self xks_handleNotifications:userInfo];
+}
+
+//- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler{
+////    [self xks_application:application didReceiveRemoteNotification:userInfo fetchCompletionHandler:completionHandler];
+//}
+#pragma mark Push Notification
+- (void)application:(UIApplication *)application didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings
+{
+    [application registerForRemoteNotifications];
+}
+
+#pragma local notification
+- (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification
+{
+//    [self xks_showlocalNofificationAtFront:notification identifierKey:nil];
+}
+
+#pragma mark 设置deviceToken
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
+{
+//    [self xks_registerDeviceToken:deviceToken];
+}
+
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
+    NSString *error_str = [NSString stringWithFormat: @"%@", error];
+    NSLog(@"Failed to get token, error:%@", error_str);
+}
+
 
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
+
 }
 
 
@@ -45,6 +122,7 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    [_locationManager stopUpdatingLocation];
 }
 
 
