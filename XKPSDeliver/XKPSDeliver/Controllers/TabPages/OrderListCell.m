@@ -42,6 +42,7 @@
 - (instancetype)initWithModel:(OrderListModel *)model{
     self = [super init];
     if (self) {
+        self.backgroundColor = LIGHT_WHITE_COLOR;
         //图标
         ASImageNode *imageNode = [[ASImageNode alloc]init];
         _OrderStateImgNode = imageNode;
@@ -93,10 +94,7 @@
     
     ASInsetLayoutSpec *insetLayout = [ASInsetLayoutSpec insetLayoutSpecWithInsets:UIEdgeInsetsMake(5, 10, 5, 20) child:horStackSpec];
 
-//    ASStackLayoutSpec *verLineStackSpec = [ASStackLayoutSpec stackLayoutSpecWithDirection:ASStackLayoutDirectionVertical spacing:5 justifyContent:ASStackLayoutJustifyContentStart alignItems:ASStackLayoutAlignItemsStart children:@[horStackSpec,_OrderStateLineNode]];
-
-    return insetLayout;
-    
+    return insetLayout;    
 }
 
 @end

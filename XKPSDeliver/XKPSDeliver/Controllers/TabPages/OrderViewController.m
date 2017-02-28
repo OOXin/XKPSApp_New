@@ -9,6 +9,7 @@
 #import "OrderViewController.h"
 #import "AccountViewController.h"
 #import "OrderListCell.h"
+#import "OrderRunningCell.h"
 #import "OrderListModel.h"
 @interface OrderViewController ()<ASTableDelegate,ASTableDataSource>
 {
@@ -30,13 +31,12 @@
         cellArray = [OrderListModel mj_objectArrayWithFile:path];
     }
     return self;
-
 }
 
 - (void)addTableNode{
     _tableNode = [[ASTableNode alloc]init];
     _tableNode.backgroundColor = ROOT_VIEW_BGCOLOR;
-    _tableNode.frame = CGRectMake(0, 0, WIDTH, HEIGHT-UI_TAB_BAR_HEIGHT);
+    _tableNode.frame = CGRectMake(0, UI_NAV_BAR_HEIGHT, WIDTH, HEIGHT-UI_TAB_BAR_HEIGHT-UI_NAV_BAR_HEIGHT);
     _tableNode.delegate = self;
     _tableNode.dataSource = self;
     _tableNode.view.tableFooterView = [[UIView alloc]init];
@@ -46,13 +46,12 @@
 
 - (void)viewWillLayoutSubviews{
     [super viewWillLayoutSubviews];
-
+    self.titleNavLabel.text = @"订单";
 }
-
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.bgNvaView.hidden = YES;
+//    self.bgNvaView.hidden = YES;
 }
 
 - (void)push{
@@ -82,15 +81,17 @@
 #pragma mark - ASTableDataSource
 - (NSInteger)tableNode:(ASTableNode *)tableNode numberOfRowsInSection:(NSInteger)section{
 
-     return cellArray.count;
+     return cellArray.count+1;
 }
 - (NSInteger)numberOfSectionsInTableNode:(ASTableNode *)tableNode{
     return 1;
 }
 
 - (ASCellNode *)tableNode:(ASTableNode *)tableNode nodeForRowAtIndexPath:(NSIndexPath *)indexPath{
-
-    return [[OrderListCell alloc]initWithModel:cellArray[indexPath.row]];
+    if (indexPath.row == 0) {
+        return [[OrderRunningCell alloc]initWithData:[[NSObject alloc]init]];
+    }else
+        return [[OrderListCell alloc]initWithModel:cellArray[indexPath.row-1]];
 }
 
 - (void)tableNode:(ASTableNode *)tableNode didSelectRowAtIndexPath:(NSIndexPath *)indexPath{

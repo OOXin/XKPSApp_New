@@ -78,7 +78,6 @@
     if ([self isRootViewController]) {
         self.bgNvaView.backgroundColor = Blue_Color;
         self.leftNavButton.hidden = YES;
-        self.titleNavLabel.text = @"导航栏一";
     }else{
         self.bgNvaView.backgroundColor = GREEN_COLOR;
         self.leftNavButton.hidden = NO;
