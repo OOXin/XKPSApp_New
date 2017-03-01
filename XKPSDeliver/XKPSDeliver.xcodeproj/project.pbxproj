@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		107F6B60FA828B49C7CB19C9 /* libPods-XKPSDeliver.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A9EFC771776241903824C94E /* libPods-XKPSDeliver.a */; };
 		16153B9D1E502B8400BD7C37 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16153B9C1E502B8400BD7C37 /* RootViewController.m */; };
 		162AF2BF1E4ED642006140B8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 162AF2BE1E4ED642006140B8 /* main.m */; };
 		162AF2C21E4ED642006140B8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 162AF2C11E4ED642006140B8 /* AppDelegate.m */; };
@@ -44,6 +45,7 @@
 		16B2FFC51E64230D00AB68E3 /* OrderListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B2FFC41E64230D00AB68E3 /* OrderListModel.m */; };
 		16B2FFD21E64504900AB68E3 /* XKS_AdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B2FFCF1E64504900AB68E3 /* XKS_AdViewController.m */; };
 		16B2FFD31E64504900AB68E3 /* XKS_LaunchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B2FFD11E64504900AB68E3 /* XKS_LaunchView.m */; };
+		16B2FFDB1E656DD600AB68E3 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B2FFDA1E656DD600AB68E3 /* LoginViewController.m */; };
 		16CC580B1E5EC08900888658 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16CC580A1E5EC08900888658 /* UIKit.framework */; };
 		16CC580F1E5EC09100888658 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16CC580C1E5EC09100888658 /* AVFoundation.framework */; };
 		16CC58101E5EC09100888658 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16CC580D1E5EC09100888658 /* CoreFoundation.framework */; };
@@ -54,7 +56,6 @@
 		16FD801D1E4EF160007EC260 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 16FD801C1E4EF160007EC260 /* Images.xcassets */; };
 		16FD802F1E4F00EA007EC260 /* readme.txt in Resources */ = {isa = PBXBuildFile; fileRef = 16FD802E1E4F00EA007EC260 /* readme.txt */; };
 		16FD80311E4F070B007EC260 /* xks.cer in Resources */ = {isa = PBXBuildFile; fileRef = 16FD80301E4F070B007EC260 /* xks.cer */; };
-		1A4EFA32F2AB9948CB76007F /* libPods-XKPSDeliver.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3560891B562F9F0F0F7AB55C /* libPods-XKPSDeliver.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -146,6 +147,8 @@
 		16B2FFCF1E64504900AB68E3 /* XKS_AdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XKS_AdViewController.m; sourceTree = "<group>"; };
 		16B2FFD01E64504900AB68E3 /* XKS_LaunchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XKS_LaunchView.h; sourceTree = "<group>"; };
 		16B2FFD11E64504900AB68E3 /* XKS_LaunchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XKS_LaunchView.m; sourceTree = "<group>"; };
+		16B2FFD91E656DD600AB68E3 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		16B2FFDA1E656DD600AB68E3 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		16CC580A1E5EC08900888658 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		16CC580C1E5EC09100888658 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		16CC580D1E5EC09100888658 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
@@ -157,8 +160,8 @@
 		16FD801C1E4EF160007EC260 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		16FD802E1E4F00EA007EC260 /* readme.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = readme.txt; sourceTree = "<group>"; };
 		16FD80301E4F070B007EC260 /* xks.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = xks.cer; sourceTree = "<group>"; };
-		3560891B562F9F0F0F7AB55C /* libPods-XKPSDeliver.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-XKPSDeliver.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8998EF5F1CB74A6A3765BB73 /* Pods-XKPSDeliver.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XKPSDeliver.debug.xcconfig"; path = "Pods/Target Support Files/Pods-XKPSDeliver/Pods-XKPSDeliver.debug.xcconfig"; sourceTree = "<group>"; };
+		A9EFC771776241903824C94E /* libPods-XKPSDeliver.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-XKPSDeliver.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6CE546BF24719F71A1ADC82 /* Pods-XKPSDeliver.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XKPSDeliver.release.xcconfig"; path = "Pods/Target Support Files/Pods-XKPSDeliver/Pods-XKPSDeliver.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -181,7 +184,7 @@
 				16CC58101E5EC09100888658 /* CoreFoundation.framework in Frameworks */,
 				16CC58111E5EC09100888658 /* Foundation.framework in Frameworks */,
 				16CC580B1E5EC08900888658 /* UIKit.framework in Frameworks */,
-				1A4EFA32F2AB9948CB76007F /* libPods-XKPSDeliver.a in Frameworks */,
+				107F6B60FA828B49C7CB19C9 /* libPods-XKPSDeliver.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -408,6 +411,15 @@
 			path = AD;
 			sourceTree = "<group>";
 		};
+		16B2FFD81E656DC600AB68E3 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				16B2FFD91E656DD600AB68E3 /* LoginViewController.h */,
+				16B2FFDA1E656DD600AB68E3 /* LoginViewController.m */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
 		16FD801E1E4EF85D007EC260 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -494,6 +506,7 @@
 		16FD80281E4EFA31007EC260 /* LoginPage */ = {
 			isa = PBXGroup;
 			children = (
+				16B2FFD81E656DC600AB68E3 /* Login */,
 				16B2FFCD1E64504900AB68E3 /* AD */,
 			);
 			path = LoginPage;
@@ -560,7 +573,7 @@
 				16CC580D1E5EC09100888658 /* CoreFoundation.framework */,
 				16CC580E1E5EC09100888658 /* Foundation.framework */,
 				16CC580A1E5EC08900888658 /* UIKit.framework */,
-				3560891B562F9F0F0F7AB55C /* libPods-XKPSDeliver.a */,
+				A9EFC771776241903824C94E /* libPods-XKPSDeliver.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -763,6 +776,7 @@
 				162AF2C51E4ED642006140B8 /* ViewController.m in Sources */,
 				16553F721E602A760078C585 /* OrderRunningCell.m in Sources */,
 				16553F5F1E600BE70078C585 /* UIColor+expanded.m in Sources */,
+				16B2FFDB1E656DD600AB68E3 /* LoginViewController.m in Sources */,
 				167447761E5ECB4D002DB072 /* UINavigationController+PushPop.m in Sources */,
 				16553F751E602A990078C585 /* OrderListCell.m in Sources */,
 				16B2FFD31E64504900AB68E3 /* XKS_LaunchView.m in Sources */,

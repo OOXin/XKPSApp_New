@@ -35,8 +35,13 @@
 
 - (void)addTableNode{
     _tableNode = [[ASTableNode alloc]init];
+    _tableNode.view.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        NSLog(@"重新请求数据");
+        [_tableNode.view.mj_header endRefreshing];
+    }];
+    
     _tableNode.backgroundColor = ROOT_VIEW_BGCOLOR;
-    _tableNode.frame = CGRectMake(0, UI_NAV_BAR_HEIGHT, WIDTH, HEIGHT-UI_TAB_BAR_HEIGHT-UI_NAV_BAR_HEIGHT);
+    _tableNode.frame = CGRectMake(0, UI_NAV_BAR_HEIGHT-UI_STATUS_BAR_HEIGHT, WIDTH, HEIGHT-UI_TAB_BAR_HEIGHT-UI_NAV_BAR_HEIGHT);
     _tableNode.delegate = self;
     _tableNode.dataSource = self;
     _tableNode.view.tableFooterView = [[UIView alloc]init];

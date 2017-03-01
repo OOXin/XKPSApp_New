@@ -63,7 +63,7 @@
         [self addSubnode:_OrderStateSubTitleNode];
         //右侧的数目
         ASTextNode *numNode = [[ASTextNode alloc]init];
-        numNode.attributedText = [NSAttributedString attributedStringWithString:@"1" fontSize:10 color:RED_COLOR];
+        numNode.attributedText = [NSAttributedString attributedStringWithString:@"1" fontSize:11 color:LIGHT_GRAY_COLOR];
         _OrderStateNumNode = numNode;
         [self addSubnode:_OrderStateNumNode];
         //线
@@ -78,7 +78,7 @@
 
 - (ASLayoutSpec *)layoutSpecThatFits:(ASSizeRange)constrainedSize
 {
-    _OrderStateImgNode.style.preferredSize = CGSizeMake(50, 50);
+    _OrderStateImgNode.style.preferredSize = CGSizeMake(40, 40);
 
     _OrderStateLineNode.style.preferredSize = CGSizeMake(constrainedSize.max.width, 0.5);
 
@@ -92,7 +92,7 @@
     //
     ASStackLayoutSpec *horStackSpec = [ASStackLayoutSpec stackLayoutSpecWithDirection:ASStackLayoutDirectionHorizontal spacing:12 justifyContent:ASStackLayoutJustifyContentStart alignItems:ASStackLayoutAlignItemsCenter children:@[_OrderStateImgNode,verticalStackSpec,_OrderStateNumNode]];
     
-    ASInsetLayoutSpec *insetLayout = [ASInsetLayoutSpec insetLayoutSpecWithInsets:UIEdgeInsetsMake(5, 10, 5, 20) child:horStackSpec];
+    ASInsetLayoutSpec *insetLayout = [ASInsetLayoutSpec insetLayoutSpecWithInsets:UIEdgeInsetsMake(12, 10, 12, 20) child:horStackSpec];
 
     return insetLayout;    
 }

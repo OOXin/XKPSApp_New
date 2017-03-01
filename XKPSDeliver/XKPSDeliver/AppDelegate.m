@@ -14,7 +14,7 @@
 #import "XKS_TabbarController.h"
 #import "XKS_AdViewController.h"
 #import "JPFPSStatus.h"
-
+#import "LoginViewController.h"
 @interface AppDelegate ()
 
 @end
@@ -40,7 +40,9 @@
     [[JPFPSStatus sharedInstance] open];
     
 #endif
-    
+  
+    [IQKeyboardManager sharedManager].shouldResignOnTouchOutside = YES;
+
     return YES;
 }
 
@@ -57,10 +59,18 @@
 
 - (void)addAdvertiseMentView{
     UIViewController *rootViewController = self.window.rootViewController;
-    XKS_AdViewController *launchController = [[XKS_AdViewController alloc]init];
-    [rootViewController addChildViewController:launchController];
-    launchController.view.frame = rootViewController.view.frame;
-    [rootViewController.view addSubview:launchController.view];
+    LoginViewController *loginVC = [[LoginViewController alloc]init];
+    loginVC.SuccessLogin = ^(){
+        NSLog(@"登陆成功");//判断有没有广告
+    };
+    [rootViewController addChildViewController:loginVC];
+    loginVC.view.frame = rootViewController.view.frame;
+    [rootViewController.view addSubview:loginVC.view];
+    
+//    XKS_AdViewController *launchController = [[XKS_AdViewController alloc]init];
+//    [rootViewController addChildViewController:launchController];
+//    launchController.view.frame = rootViewController.view.frame;
+//    [rootViewController.view addSubview:launchController.view];
 }
 
 
