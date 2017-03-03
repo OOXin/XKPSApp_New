@@ -21,6 +21,7 @@
 #import <MJRefresh/MJRefresh.h>
 #import <MJExtension/MJExtension.h>
 #import <IQKeyboardManager/IQKeyboardManager.h>
+#import <ReactiveCocoa/ReactiveCocoa.h>
 //自身文件
 #import "XKS_NavigationController.h"
 

@@ -40,7 +40,7 @@
 /**
  登录按钮
  */
-@property (nonatomic, strong)ASButtonNode *loginNode;
+@property (nonatomic, strong)UIButton *loginNode;
 
 @end
 
@@ -84,6 +84,7 @@
     _phoneTextField = [[UITextField alloc]initWithFrame:CGRectMake(44, 0, _phoneImgNode.view.width-88, 44)];
     _phoneTextField.userInteractionEnabled = YES;
     _phoneTextField.font = GetFont(16);
+    _phoneTextField.jk_maxLength = 11;
     _phoneTextField.keyboardType = UIKeyboardTypePhonePad;
     [_phoneImgNode.view addSubview:_phoneTextField];
 
@@ -96,27 +97,41 @@
     [self.node addSubnode:_passwordImgNode];
     
     //密码输入框
-    
     _passwordTextField = [[UITextField alloc]init];
     _passwordTextField.frame = CGRectMake(44, 0, _passwordImgNode.view.width-88, 44);
     _passwordTextField.font = GetFont(16);
-    _passwordTextField.textColor = LIGHT_GRAY_COLOR;
+    _passwordTextField.textColor = LightTextColor;
     _passwordTextField.secureTextEntry = YES;
     _passwordTextField.userInteractionEnabled = YES;
-    _passwordTextField.jk_maxLength = 11;
     _passwordTextField.keyboardType = UIKeyboardTypeAlphabet;
     [_passwordImgNode.view addSubview:_passwordTextField];
+    
+    //登陆按钮
+    _loginNode = CUSTOMBUTTON;
+    _loginNode.frame = CGRectMake(_passwordImgNode.view.left, _passwordImgNode.view.bottom+12, _passwordImgNode.view.width, 44);
+    [_loginNode setTitle:@"登陆" forState:UIControlStateNormal];
+    _loginNode.enabled = NO;
+    _loginNode.titleLabel.font = GetFont(16);
+    [_loginNode jk_setBackgroundColor:LIGHT_GRAY_COLOR forState:UIControlStateDisabled];
+    [_loginNode jk_setBackgroundColor:GREEN_COLOR forState:UIControlStateNormal];
+    [_loginNode setTitleColor:LightTextColor forState:UIControlStateDisabled];
+    [_loginNode setTitleColor:LIGHT_WHITE_COLOR forState:UIControlStateNormal];
+    _loginNode.adjustsImageWhenHighlighted = NO;
+    [[_loginNode rac_signalForControlEvents:UIControlEventTouchUpInside]subscribeNext:^(id x) {
+        NSLog(@"登陆");
+    }];
+    [self.node.view addSubview:_loginNode];
+    RAC(self.loginNode, enabled) = [RACSignal combineLatest:@[_passwordTextField.rac_textSignal,_phoneTextField.rac_textSignal] reduce:^(NSString *password,NSString *username){
+        return @(username.length==11&&password.length>0);
+    }];
+
 }
 
 - (void)viewWillLayoutSubviews{
 
     [super viewWillLayoutSubviews];
     
-
-
 }
-
-
 
 /*
 #pragma mark - Navigation

@@ -39,14 +39,14 @@
         NSLog(@"重新请求数据");
         [_tableNode.view.mj_header endRefreshing];
     }];
-    
     _tableNode.backgroundColor = ROOT_VIEW_BGCOLOR;
     _tableNode.frame = CGRectMake(0, UI_NAV_BAR_HEIGHT-UI_STATUS_BAR_HEIGHT, WIDTH, HEIGHT-UI_TAB_BAR_HEIGHT-UI_NAV_BAR_HEIGHT);
-    _tableNode.delegate = self;
-    _tableNode.dataSource = self;
     _tableNode.view.tableFooterView = [[UIView alloc]init];
     _tableNode.view.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.node addSubnode:_tableNode];
+//    [self setUpDelegate];
+    _tableNode.delegate = self;
+    _tableNode.dataSource = self;
 }
 
 - (void)viewWillLayoutSubviews{
@@ -57,7 +57,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 //    self.bgNvaView.hidden = YES;
+    
 }
+
+//- (void)setUpDelegate{
+//    [[self rac_signalForSelector:@selector(tableNode:numberOfRowsInSection:)fromProtocol:@protocol(ASTableDataSource)]subscribeNext:^(id x) {
+//         return cellArray.count+1;
+//    }];
+//    
+//}
 
 - (void)push{
     AccountViewController *accountVC = [[AccountViewController alloc]init];
