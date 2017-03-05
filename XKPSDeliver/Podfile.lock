@@ -59,6 +59,11 @@ PODS:
   - ReactiveCocoa/no-arc (2.5)
   - ReactiveCocoa/UI (2.5):
     - ReactiveCocoa/Core
+  - RealReachability (1.1.8):
+    - RealReachability/Connection (= 1.1.8)
+    - RealReachability/Ping (= 1.1.8)
+  - RealReachability/Connection (1.1.8)
+  - RealReachability/Ping (1.1.8)
   - RegexKitLite (4.0)
   - SCLAlertView-Objective-C (1.1.0)
   - SDWebImage (3.7.4):
@@ -193,6 +198,7 @@ DEPENDENCIES:
   - PNChart (~> 0.8.9)
   - Reachability (= 3.2)
   - ReactiveCocoa (~> 2.5)
+  - RealReachability
   - RegexKitLite (~> 4.0)
   - SCLAlertView-Objective-C (~> 1.1.0)
   - SDWebImage (= 3.7.4)
@@ -220,6 +226,7 @@ SPEC CHECKSUMS:
   PNChart: 84774d225c2126ded6c93d4dbe6ae98c3a73c2d2
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
   ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
+  RealReachability: e6c8a2bbffa316006e8c282efc1ee2567d61a920
   RegexKitLite: c0e4c12e6e7de0769f3a3ed679f0f61604170661
   SCLAlertView-Objective-C: 349a894d4e1d1dbf14d443da784c6ca1e92c78d2
   SDWebImage: 247edd7dd80dd6124197b0d6a17846fe9d1df968
@@ -233,6 +240,6 @@ SPEC CHECKSUMS:
   YYWebImage: 5f7f36aee2ae293f016d418c7d6ba05c4863e928
   ZBarSDK: 4c1b5daeb7d6cc67dc9355e690af0230a661f6ec
 
-PODFILE CHECKSUM: 642ac97adc3c5cc4a7fb8eeb178bbd16b4c61b33
+PODFILE CHECKSUM: 85b04cfc4b8830b667706c105d58a2b7ce559c8f
 
 COCOAPODS: 1.1.1

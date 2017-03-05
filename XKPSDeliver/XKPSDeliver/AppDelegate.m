@@ -62,15 +62,16 @@
     LoginViewController *loginVC = [[LoginViewController alloc]init];
     loginVC.SuccessLogin = ^(){
         NSLog(@"登陆成功");//判断有没有广告
+        XKS_AdViewController *launchController = [[XKS_AdViewController alloc]init];
+        [rootViewController addChildViewController:launchController];
+        launchController.view.frame = rootViewController.view.frame;
+        [rootViewController.view addSubview:launchController.view];
+
     };
     [rootViewController addChildViewController:loginVC];
     loginVC.view.frame = rootViewController.view.frame;
     [rootViewController.view addSubview:loginVC.view];
     
-//    XKS_AdViewController *launchController = [[XKS_AdViewController alloc]init];
-//    [rootViewController addChildViewController:launchController];
-//    launchController.view.frame = rootViewController.view.frame;
-//    [rootViewController.view addSubview:launchController.view];
 }
 
 
@@ -135,5 +136,19 @@
     [_locationManager stopUpdatingLocation];
 }
 
+- (void)configurationNetWorkStatus
+{
+    
+    [GLobalRealReachability startNotifier];
+    
+    RAC(self, NetWorkStatus) = [[[[[NSNotificationCenter defaultCenter]
+                                   rac_addObserverForName:kRealReachabilityChangedNotification object:nil]
+                                  map:^(NSNotification *notification) {
+                                      return @([notification.object currentReachabilityStatus]);
+                                  }]
+                                 startWith:@([GLobalRealReachability currentReachabilityStatus])]
+                                distinctUntilChanged];
+    
+}
 
 @end

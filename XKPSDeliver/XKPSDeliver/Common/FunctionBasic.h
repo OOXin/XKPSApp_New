@@ -68,6 +68,9 @@ alpha:1]
 #define GetBoldFont(x) [UIFont boldSystemFontOfSize:x]
 //显示系统提示框，此方法用到的类已经废弃
 #define ALERT_VIEW(STR) {UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:STR delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];[alert show];}
+//获取appdelegate
+#define XKS_APPDelegate  ((AppDelegate*)[UIApplication sharedApplication].delegate)
+
 /****************************  自定义NSLog *****************************/
 #ifdef DEBUG
 

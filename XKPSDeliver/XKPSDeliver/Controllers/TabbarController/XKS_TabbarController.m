@@ -12,6 +12,9 @@
 #import "AccountViewController.h"
 #import "MapViewController.h"
 #import "SystemViewController.h"
+
+#import "OrderViewModel.h"
+
 @interface XKS_TabbarController ()<UITabBarControllerDelegate>
 
 @property (nonatomic, strong)NSMutableArray *tabbarItems;

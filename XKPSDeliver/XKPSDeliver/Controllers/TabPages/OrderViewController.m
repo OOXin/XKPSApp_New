@@ -8,9 +8,13 @@
 
 #import "OrderViewController.h"
 #import "AccountViewController.h"
+
 #import "OrderListCell.h"
 #import "OrderRunningCell.h"
 #import "OrderListModel.h"
+
+#import "OrderViewModel.h"
+
 @interface OrderViewController ()<ASTableDelegate,ASTableDataSource>
 {
     NSInteger cellCounts;
@@ -19,6 +23,8 @@
 }
 
 @property (nonatomic,strong)ASTableNode *tableNode;
+
+@property (nonatomic,strong)OrderViewModel *viewModel;
 
 @end
 
@@ -35,16 +41,21 @@
 
 - (void)addTableNode{
     _tableNode = [[ASTableNode alloc]init];
-    _tableNode.view.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        NSLog(@"重新请求数据");
-        [_tableNode.view.mj_header endRefreshing];
+    _tableNode.view.mj_header = [XKS_RefreshGifHeader headerWithRefreshingBlock:^{
+        NSLog(@"下拉刷新，重新请求数据");
+        [self.viewModel.orderRunningListCommand execute:@1];
     }];
+    
+    [[self.viewModel.orderRunningListCommand.executing skip:1]subscribeNext:^(id x) {
+        [_tableNode.view.mj_header endRefreshing];
+        NSLog(@"停止刷新");
+    }];
+    
     _tableNode.backgroundColor = ROOT_VIEW_BGCOLOR;
     _tableNode.frame = CGRectMake(0, UI_NAV_BAR_HEIGHT-UI_STATUS_BAR_HEIGHT, WIDTH, HEIGHT-UI_TAB_BAR_HEIGHT-UI_NAV_BAR_HEIGHT);
     _tableNode.view.tableFooterView = [[UIView alloc]init];
     _tableNode.view.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.node addSubnode:_tableNode];
-//    [self setUpDelegate];
     _tableNode.delegate = self;
     _tableNode.dataSource = self;
 }
@@ -56,18 +67,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    self.bgNvaView.hidden = YES;
     
 }
 
-//- (void)setUpDelegate{
-//    [[self rac_signalForSelector:@selector(tableNode:numberOfRowsInSection:)fromProtocol:@protocol(ASTableDataSource)]subscribeNext:^(id x) {
-//         return cellArray.count+1;
-//    }];
-//    
-//}
-
 - (void)push{
+    
     AccountViewController *accountVC = [[AccountViewController alloc]init];
     
     [self.navigationController pushViewController:accountVC animated:YES];
@@ -113,4 +117,10 @@
     [self.navigationController pushViewController:accountVC animated:YES];
 }
 
+- (OrderViewModel *)viewModel{
+    if (!_viewModel) {
+        _viewModel  = [[OrderViewModel alloc]init];
+    }
+    return _viewModel;
+}
 @end

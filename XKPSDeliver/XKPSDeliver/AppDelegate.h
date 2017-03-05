@@ -34,6 +34,8 @@
 
 @property (strong, nonatomic) UIWindow *window;
 
+@property (nonatomic, assign)ReachabilityStatus NetWorkStatus;
+
 @property (nonatomic, retain) CLLocationManager* locationManager;
 
 @property (nonatomic, retain)BMKLocationService *locService;

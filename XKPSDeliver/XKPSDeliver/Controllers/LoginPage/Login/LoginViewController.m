@@ -40,6 +40,7 @@
 /**
  登录按钮
  */
+
 @property (nonatomic, strong)UIButton *loginNode;
 
 @end
@@ -65,7 +66,7 @@
     return self;
 }
 
-- (void)addNodes{
+- (void)addNodes{    
     //背景node
     _backViewNode = [[ASImageNode alloc]init];
     _backViewNode.frame = self.view.bounds;
@@ -117,14 +118,28 @@
     [_loginNode setTitleColor:LightTextColor forState:UIControlStateDisabled];
     [_loginNode setTitleColor:LIGHT_WHITE_COLOR forState:UIControlStateNormal];
     _loginNode.adjustsImageWhenHighlighted = NO;
+    
     [[_loginNode rac_signalForControlEvents:UIControlEventTouchUpInside]subscribeNext:^(id x) {
         NSLog(@"登陆");
+        
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        
+        dispatch_time_t time =  dispatch_time(DISPATCH_TIME_NOW, (uint64_t)(NSEC_PER_SEC * 3));
+        
+        dispatch_after(time, dispatch_get_main_queue(), ^{
+            [self dismissController];
+            if (self.SuccessLogin) {
+                self.SuccessLogin();
+            }
+
+        });
     }];
     [self.node.view addSubview:_loginNode];
+    
     RAC(self.loginNode, enabled) = [RACSignal combineLatest:@[_passwordTextField.rac_textSignal,_phoneTextField.rac_textSignal] reduce:^(NSString *password,NSString *username){
         return @(username.length==11&&password.length>0);
     }];
-
+    
 }
 
 - (void)viewWillLayoutSubviews{

@@ -25,4 +25,6 @@ pod 'BPushSDK', '~> 1.4.8'
 pod 'AsyncDisplayKit', '~> 2.1'
 pod 'YYWebImage'
 pod 'ReactiveCocoa','~>2.5'
+pod 'RealReachability'
+
 end
