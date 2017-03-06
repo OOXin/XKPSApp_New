@@ -28,6 +28,7 @@
 #import "XKS_NavigationController.h"
 #import "XKS_RefreshGifHeader.h"
 #import "XKS_RefreshGifFooter.h"
+#import "NetManager.h"
 #endif
 
 

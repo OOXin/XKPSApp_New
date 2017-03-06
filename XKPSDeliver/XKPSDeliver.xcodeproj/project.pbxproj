@@ -160,6 +160,7 @@
 		167447A21E5EE688002DB072 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		167447A41E5EE692002DB072 /* SystemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SystemViewController.h; sourceTree = "<group>"; };
 		167447A51E5EE692002DB072 /* SystemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SystemViewController.m; sourceTree = "<group>"; };
+		168E2B3E1E6D4A28002160C4 /* NetWorkConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetWorkConstants.h; sourceTree = "<group>"; };
 		16B2FFC31E64230D00AB68E3 /* OrderListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderListModel.h; sourceTree = "<group>"; };
 		16B2FFC41E64230D00AB68E3 /* OrderListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderListModel.m; sourceTree = "<group>"; };
 		16B2FFCE1E64504900AB68E3 /* XKS_AdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XKS_AdViewController.h; sourceTree = "<group>"; };
@@ -411,6 +412,7 @@
 			children = (
 				165F54FA1E6927800054C580 /* NetManager.h */,
 				165F54FB1E6927800054C580 /* NetManager.m */,
+				168E2B3E1E6D4A28002160C4 /* NetWorkConstants.h */,
 			);
 			path = XKS_BaseNetWork;
 			sourceTree = "<group>";

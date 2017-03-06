@@ -38,14 +38,6 @@
 #define JSPATCH_APPKEY @""
 /*JSPatch RAS Publickey*/
 #define JSPATCH_RAS_PUBLICKEY @""
-/***************************** 接口URL  *****************************/
-#ifdef DEBUG
-//测试服务器
-#define SERVICE_URL   @"http://101.200.90.137:20068/client"
-#else
-//正式服务器
-#define SERVICE_URL   @"http://txbd.xiakesong.cn"
-#endif
 /***************************** 尺寸  *****************************/
 #define WIDTH  ([[UIScreen mainScreen]bounds].size.width)
 #define HEIGHT ([[UIScreen mainScreen]bounds].size.height)

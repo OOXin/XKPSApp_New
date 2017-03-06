@@ -40,7 +40,6 @@
 /**
  登录按钮
  */
-
 @property (nonatomic, strong)UIButton *loginNode;
 
 @end

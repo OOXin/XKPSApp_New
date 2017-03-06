@@ -7,19 +7,21 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "NetWorkConstants.h"
 
+/**
+ 成功的回调
+ */
 typedef void(^SuccessBlock)(id successReturn);
 
+/**
+ 失败的回调
+ */
 typedef void(^FailedBlock)(id failedReturn);
 /**
   下载进度
-
- @param bytesRead 已下载的大小
- @param totalBytesRead 文件总大小
  */
-typedef void (^XKSDownloadProgress)(int64_t bytesRead,
-int64_t totalBytesRead);
-
+typedef void (^XKSDownloadProgress)(CGFloat percent);
 /*!
  *
  *  上传进度
@@ -34,11 +36,11 @@ typedef XKSDownloadProgress XKSGetProgress;
 
 typedef XKSDownloadProgress XKSPostProgress;
 
-typedef NS_ENUM(NSInteger, HTNetworkStatus) {
-    kHTNetworkStatusUnknown          = -1,  //未知网络
-    kHTNetworkStatusNotReachable     = 0,   //网络无连接
-    kHTNetworkStatusReachableViaWWAN = 1,   //2，3，4G网络
-    kHTNetworkStatusReachableViaWiFi = 2,   //WIFI网络
+typedef NS_ENUM(NSInteger, XKSNetworkStatus) {
+    XKSNetworkStatusUnknown          = -1,  //未知网络
+    XKSNetworkStatusNotReachable     = 0,   //网络无连接
+    XKSNetworkStatusReachableViaWWAN = 1,   //2，3，4G网络
+    XKSNetworkStatusReachableViaWiFi = 2,   //WIFI网络
 };
 
 @interface NetManager : NSObject
@@ -54,8 +56,10 @@ typedef NS_ENUM(NSInteger, HTNetworkStatus) {
 //COMMON POST
 +(void)postRequestWithUrl:(NSString *)url param:(NSDictionary *)param addProgressHudOn:(UIView *)targetview Tip:(NSString *)tip successReturn:(SuccessBlock)successReturn failed:(FailedBlock)failed;
 
-
 //COMMON GET
 +(void)getRequestWithUrl:(NSString *)url param:(NSDictionary *)param addProgressHudOn:(UIView *)targetview Tip:(NSString *)tip successReturn:(SuccessBlock)successReturn failed:(FailedBlock)failed;
+
+//Common download
++(void)downLoadWithUrlString:(NSString *)urlString progress:(XKSDownloadProgress)progress completed:(SuccessBlock)completed;
 
 @end
