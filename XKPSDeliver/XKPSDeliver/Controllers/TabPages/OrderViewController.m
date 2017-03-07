@@ -68,6 +68,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [NetManager getRequestWithUrl:__runningOrder param:@{@"imei":[[SystemConfig sharedSystemConfig]getDeviceToken]} addProgressHudOn:nil Tip:nil successReturn:^(id successReturn) {
+        NSLog(@"jsondic=%@",successReturn);
+    } failed:^(id failedReturn) {
+        
+    }];
+  
 }
 
 - (void)push{

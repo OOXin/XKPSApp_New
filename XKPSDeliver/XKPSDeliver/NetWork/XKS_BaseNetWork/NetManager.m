@@ -36,6 +36,14 @@
     AFHTTPSessionManager *manager = [self manager];
     NSMutableDictionary *uploadParam = [NSMutableDictionary dictionaryWithDictionary:param];
     //设置一些基本的请求参数
+    [manager.requestSerializer setValue:[[SystemConfig sharedSystemConfig]getDeviceToken] forHTTPHeaderField:@"IMEI"];
+    [manager.requestSerializer setValue:@"TRUE" forHTTPHeaderField:@"EKS-Mobile"];
+    [manager.requestSerializer setValue:@"TRUE" forHTTPHeaderField:@"BRCY-Mobile"];
+    [manager.requestSerializer setValue:@"ios" forHTTPHeaderField:@"EKS-Device-Type"];
+    [manager.requestSerializer setValue:@"driver" forHTTPHeaderField:@"EKS-Client-Type"];
+    [manager.requestSerializer setValue:[[[NSBundle mainBundle]infoDictionary]objectForKey:@"CFBundleVersion"] forHTTPHeaderField:@"EKS-DDS-Version"];
+    [manager.requestSerializer setValue:[[SystemConfig sharedSystemConfig]getSessionId] forHTTPHeaderField:@"Cookie"];
+
     [manager GET:url parameters:uploadParam progress:^(NSProgress * _Nonnull downloadProgress) {
         // 这里可以获取到目前数据请求的进度
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -58,7 +66,10 @@
 
     NSMutableDictionary *uploadParam = [NSMutableDictionary dictionaryWithDictionary:param];
     //设置基本请求参数
-    
+    [uploadParam setObject:@"driverMobile" forKey:@"lt"];
+    [uploadParam setObject:[[SystemConfig sharedSystemConfig]getDeviceToken] forKey:@"imei"];
+    [uploadParam setObject:[[[NSBundle mainBundle]infoDictionary]objectForKey:@"CFBundleVersion"] forKey:@"version"];
+    [uploadParam setObject:@"ios" forKey:@"os"];
     AFHTTPSessionManager *manager = [self manager];
     [manager POST:url
        parameters:uploadParam
@@ -112,7 +123,6 @@
     // 5.启动下载任务
     [task resume];
 }
-
 
 + (XKSNetworkStatus)AFNetworkStatus{
     //1.创建网络监测者

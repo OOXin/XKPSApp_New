@@ -56,8 +56,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-
-
 - (instancetype)init{
     if (self = [super init]) {
         [self addNodes];
@@ -65,7 +63,7 @@
     return self;
 }
 
-- (void)addNodes{    
+- (void)addNodes{
     //背景node
     _backViewNode = [[ASImageNode alloc]init];
     _backViewNode.frame = self.view.bounds;
@@ -86,6 +84,15 @@
     _phoneTextField.font = GetFont(16);
     _phoneTextField.jk_maxLength = 11;
     _phoneTextField.keyboardType = UIKeyboardTypePhonePad;
+    
+    [[[_phoneTextField.rac_textSignal map:^id(id value) {
+        return (NSString *)value;
+    }]filter:^BOOL(NSString *value) {
+        return value.length==11;
+    }]subscribeNext:^(id x) {
+        [[SystemConfig sharedSystemConfig]saveUserName:(NSString *)x];
+    }];
+    _phoneTextField.text = [[SystemConfig sharedSystemConfig]getUserName];
     [_phoneImgNode.view addSubview:_phoneTextField];
 
     //密码
@@ -103,7 +110,16 @@
     _passwordTextField.textColor = LightTextColor;
     _passwordTextField.secureTextEntry = YES;
     _passwordTextField.userInteractionEnabled = YES;
+    _passwordTextField.text = [[SystemConfig sharedSystemConfig]getUserPwd];
     _passwordTextField.keyboardType = UIKeyboardTypeAlphabet;
+    
+    [[_passwordTextField.rac_textSignal map:^id(id value) {
+        return (NSString *)value;
+    }]subscribeNext:^(id x) {
+        [[SystemConfig sharedSystemConfig]saveUserPwd:(NSString *)x];
+    }];
+    _passwordTextField.text = [[SystemConfig sharedSystemConfig]getUserPwd];
+
     [_passwordImgNode.view addSubview:_passwordTextField];
     
     //登陆按钮
@@ -117,34 +133,36 @@
     [_loginNode setTitleColor:LightTextColor forState:UIControlStateDisabled];
     [_loginNode setTitleColor:LIGHT_WHITE_COLOR forState:UIControlStateNormal];
     _loginNode.adjustsImageWhenHighlighted = NO;
-    
     [[_loginNode rac_signalForControlEvents:UIControlEventTouchUpInside]subscribeNext:^(id x) {
         NSLog(@"登陆");
-        
         [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        
-        dispatch_time_t time =  dispatch_time(DISPATCH_TIME_NOW, (uint64_t)(NSEC_PER_SEC * 3));
-        
-        dispatch_after(time, dispatch_get_main_queue(), ^{
-            [self dismissController];
-            if (self.SuccessLogin) {
-                self.SuccessLogin();
-            }
-
-        });
+        [self login];
     }];
     [self.node.view addSubview:_loginNode];
     
     RAC(self.loginNode, enabled) = [RACSignal combineLatest:@[_passwordTextField.rac_textSignal,_phoneTextField.rac_textSignal] reduce:^(NSString *password,NSString *username){
         return @(username.length==11&&password.length>0);
     }];
-    
+}
+
+- (void)login{
+    if (![[[SystemConfig sharedSystemConfig]getUserName]isEqualToString:_phoneTextField.text]) {
+        [[SystemConfig sharedSystemConfig]clearSystemConfigData];
+    }
+    NSDictionary *dict = @{@"n":[[SystemConfig sharedSystemConfig]getUserName],@"p":[[SystemConfig sharedSystemConfig]getUserPwd]};
+    [NetManager postRequestWithUrl:__userLogin param:dict addProgressHudOn:self.view Tip:nil successReturn:^(id successReturn) {
+        NSLog(@"successreturn%@",successReturn);
+        [self dismissController];
+        if (self.SuccessLogin) {
+            self.SuccessLogin();
+        }
+    } failed:^(id failedReturn) {
+        
+    }];
 }
 
 - (void)viewWillLayoutSubviews{
-
     [super viewWillLayoutSubviews];
-    
 }
 
 /*
