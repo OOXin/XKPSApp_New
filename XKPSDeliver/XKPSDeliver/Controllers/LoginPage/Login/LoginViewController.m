@@ -7,7 +7,7 @@
 //
 
 #import "LoginViewController.h"
-
+#import "RegisterViewController.h"
 @interface LoginViewController ()
 {
     
@@ -36,11 +36,15 @@
  密码
  */
 @property (nonatomic, strong)UITextField *passwordTextField;
-
 /**
  登录按钮
  */
 @property (nonatomic, strong)UIButton *loginNode;
+
+/**
+ 注册按钮
+ */
+@property (nonatomic, strong)YYLabel *registerLb;
 
 @end
 
@@ -81,6 +85,7 @@
     //电话输入框
     _phoneTextField = [[UITextField alloc]initWithFrame:CGRectMake(44, 0, _phoneImgNode.view.width-88, 44)];
     _phoneTextField.userInteractionEnabled = YES;
+    _phoneTextField.textColor = LIGHT_WHITE_COLOR;
     _phoneTextField.font = GetFont(16);
     _phoneTextField.jk_maxLength = 11;
     _phoneTextField.keyboardType = UIKeyboardTypePhonePad;
@@ -107,7 +112,7 @@
     _passwordTextField = [[UITextField alloc]init];
     _passwordTextField.frame = CGRectMake(44, 0, _passwordImgNode.view.width-88, 44);
     _passwordTextField.font = GetFont(16);
-    _passwordTextField.textColor = LightTextColor;
+    _passwordTextField.textColor = LIGHT_WHITE_COLOR;
     _passwordTextField.secureTextEntry = YES;
     _passwordTextField.userInteractionEnabled = YES;
     _passwordTextField.text = [[SystemConfig sharedSystemConfig]getUserPwd];
@@ -130,7 +135,7 @@
     _loginNode.titleLabel.font = GetFont(16);
     [_loginNode jk_setBackgroundColor:LIGHT_GRAY_COLOR forState:UIControlStateDisabled];
     [_loginNode jk_setBackgroundColor:GREEN_COLOR forState:UIControlStateNormal];
-    [_loginNode setTitleColor:LightTextColor forState:UIControlStateDisabled];
+    [_loginNode setTitleColor:LIGHT_WHITE_COLOR forState:UIControlStateDisabled];
     [_loginNode setTitleColor:LIGHT_WHITE_COLOR forState:UIControlStateNormal];
     _loginNode.adjustsImageWhenHighlighted = NO;
     [[_loginNode rac_signalForControlEvents:UIControlEventTouchUpInside]subscribeNext:^(id x) {
@@ -139,10 +144,32 @@
         [self login];
     }];
     [self.node.view addSubview:_loginNode];
+    //注册按钮
+    WEAK(self);
+    WEAK(_phoneTextField);
+    WEAK(_passwordTextField);
+    _registerLb = [[YYLabel alloc]initWithFrame:CGRectMake(_loginNode.right-40, _loginNode.bottom+12, 30, 14)];
+    _registerLb.font = GetFont(14);
+    _registerLb.text = @"注册";
+    _registerLb.textColor = LIGHT_WHITE_COLOR;
+    _registerLb.textAlignment = NSTextAlignmentCenter;
+    _registerLb.textTapAction = ^(UIView *containerView, NSAttributedString *text, NSRange range, CGRect rect){
+        RegisterViewController *registerVC = [[RegisterViewController alloc]init];
+        XKS_NavigationController *loginNav = [[XKS_NavigationController alloc]initWithRootViewController:registerVC];
+        registerVC.successRegist = ^(){
+            weak__phoneTextField.text = [[SystemConfig sharedSystemConfig]getUserName];
+            weak__passwordTextField.text = [[SystemConfig sharedSystemConfig]getUserPwd];
+            [weak_self login];
+        };
+        [weak_self presentViewController:loginNav animated:YES completion:nil];
+    };
+    [self.node.view addSubview:_registerLb];
     
     RAC(self.loginNode, enabled) = [RACSignal combineLatest:@[_passwordTextField.rac_textSignal,_phoneTextField.rac_textSignal] reduce:^(NSString *password,NSString *username){
         return @(username.length==11&&password.length>0);
     }];
+
+    
 }
 
 - (void)login{
@@ -152,6 +179,8 @@
     NSDictionary *dict = @{@"n":[[SystemConfig sharedSystemConfig]getUserName],@"p":[[SystemConfig sharedSystemConfig]getUserPwd]};
     [NetManager postRequestWithUrl:__userLogin param:dict addProgressHudOn:self.view Tip:nil successReturn:^(id successReturn) {
         NSLog(@"successreturn%@",successReturn);
+        NSDictionary *responseJSON = [NSJSONSerialization JSONObjectWithData:successReturn options:NSJSONReadingMutableLeaves error:nil];
+        NSLog(@"jsondict=%@",responseJSON);
         [self dismissController];
         if (self.SuccessLogin) {
             self.SuccessLogin();

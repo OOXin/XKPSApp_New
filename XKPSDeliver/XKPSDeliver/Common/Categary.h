@@ -10,5 +10,6 @@
 #define Categary_h
 #import "UIView+frame.h"
 #import "UIColor+expanded.h"
-
+#import "NSString+YYAdd.h"
+#import "UILabel+Category.h"
 #endif /* Categary_h */

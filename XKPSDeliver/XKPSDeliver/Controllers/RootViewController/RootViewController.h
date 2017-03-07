@@ -20,4 +20,9 @@
 
 @property(nonatomic,retain)ASDisplayNode *bgNvaView;
 
+- (void)backButtonClick:(ASButtonNode *)button;
+
+- (void)rightButtonClick:(ASButtonNode *)button;
+
+
 @end

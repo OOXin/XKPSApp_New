@@ -69,11 +69,12 @@
     [super viewDidLoad];
     
     [NetManager getRequestWithUrl:__runningOrder param:@{@"imei":[[SystemConfig sharedSystemConfig]getDeviceToken]} addProgressHudOn:nil Tip:nil successReturn:^(id successReturn) {
-        NSLog(@"jsondic=%@",successReturn);
+        NSDictionary *responseJSON = [NSJSONSerialization JSONObjectWithData:successReturn options:NSJSONReadingMutableLeaves error:nil];
+
+        NSLog(@"jsondic=%@",responseJSON);
     } failed:^(id failedReturn) {
         
     }];
-  
 }
 
 - (void)push{

@@ -8,6 +8,7 @@
 
 #ifndef FunctionBasic_h
 #define FunctionBasic_h
+#import <MBProgressHUD/MBProgressHUD.h>
 /***************************** 快速单例方法  *****************************/
 /**
  * 快速创建单例
@@ -68,6 +69,10 @@ alpha:1]
 #define GetBoldFont(x) [UIFont boldSystemFontOfSize:x]
 //显示系统提示框，此方法用到的类已经废弃
 #define ALERT_VIEW(STR) {UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:STR delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];[alert show];}
+
+
+#define ALERT_HUD(TARGET,STR) {MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:TARGET animated:YES];hud.label.text = STR;[hud hideAnimated:YES afterDelay:1.5];hud.mode = MBProgressHUDModeText;hud.removeFromSuperViewOnHide =YES;hud.minSize = CGSizeMake(108.f, 40.0f);hud.offset = CGPointMake(0,WIDTH/5*3);hud.layer.cornerRadius = 50;hud.label.font = [UIFont fontWithName:@"Helvetica" size:14.0];}
+
 //获取appdelegate
 #define XKS_APPDelegate  ((AppDelegate*)[UIApplication sharedApplication].delegate)
 
