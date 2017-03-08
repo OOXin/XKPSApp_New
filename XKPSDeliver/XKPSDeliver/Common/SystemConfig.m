@@ -601,8 +601,15 @@ void XKS_SwizzleMethod(Class cls, SEL originalSelector, SEL swizzledSelector)
 @end
 
 @implementation UIViewController (Additions)
+- (void)XKS_addControllerToCurrentRootView{
+    AppDelegate *delegate = XKS_APPDelegate;
+    UIViewController *currentRootViewController = delegate.window.rootViewController;
+    [currentRootViewController addChildViewController:self];
+    self.view.frame = currentRootViewController.view.frame;
+    [currentRootViewController.view addSubview:self.view];
+}
 
-- (void)dismissController
+- (void)XKS_dismissController
 {
     [UIView animateWithDuration:0.6 delay:0.2 options:UIViewAnimationOptionCurveEaseOut animations:^{
         self.view.transform = CGAffineTransformMakeScale(1.1, 1.1);

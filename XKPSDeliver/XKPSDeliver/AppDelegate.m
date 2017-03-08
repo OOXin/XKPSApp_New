@@ -62,10 +62,11 @@
     LoginViewController *loginVC = [[LoginViewController alloc]init];
     loginVC.SuccessLogin = ^(){
         NSLog(@"登陆成功");//判断有没有广告
+        UIViewController *currentRootViewController = self.window.rootViewController;
         XKS_AdViewController *launchController = [[XKS_AdViewController alloc]init];
-        [rootViewController addChildViewController:launchController];
+        [currentRootViewController addChildViewController:launchController];
         launchController.view.frame = rootViewController.view.frame;
-        [rootViewController.view addSubview:launchController.view];
+        [currentRootViewController.view addSubview:launchController.view];
 
     };
     [rootViewController addChildViewController:loginVC];

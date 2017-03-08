@@ -9,6 +9,7 @@
 ///存储用户数据的全局单例。
 
 #import <Foundation/Foundation.h>
+#import "AppDelegate.h"
 /*交换方法*/
 extern void XKS_SwizzleMethod(Class cls, SEL originalSelector, SEL swizzledSelector);
 
@@ -209,7 +210,10 @@ extern void XKS_SwizzleMethod(Class cls, SEL originalSelector, SEL swizzledSelec
 
 @interface UIViewController (Additions)
 
-- (void)dismissController;
+- (void)XKS_addControllerToCurrentRootView;
+
+- (void)XKS_dismissController;
+
 
 @end
 

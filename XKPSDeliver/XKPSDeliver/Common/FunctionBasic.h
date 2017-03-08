@@ -67,8 +67,12 @@ alpha:1]
 #define GetFont(x) [UIFont systemFontOfSize:x]
 //获取粗字体
 #define GetBoldFont(x) [UIFont boldSystemFontOfSize:x]
+#define BOLDFONT(font) [UIFont boldSystemFontOfSize:font]
 //显示系统提示框，此方法用到的类已经废弃
-#define ALERT_VIEW(STR) {UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:STR delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];[alert show];}
+//#define ALERT_VIEW(STR) {UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:STR delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];[alert show];}
+
+#define ALERT_VIEW(STR) {UIAlertAction *action = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:nil];UIAlertController *alertVc = [UIAlertController alertControllerWithTitle:STR message:@"" preferredStyle:UIAlertControllerStyleAlert];        [alertVc addAction:action];[self presentViewController:alertVc animated:YES completion:nil];}
+
 
 
 #define ALERT_HUD(TARGET,STR) {MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:TARGET animated:YES];hud.label.text = STR;[hud hideAnimated:YES afterDelay:1.5];hud.mode = MBProgressHUDModeText;hud.removeFromSuperViewOnHide =YES;hud.minSize = CGSizeMake(108.f, 40.0f);hud.offset = CGPointMake(0,WIDTH/5*3);hud.layer.cornerRadius = 50;hud.label.font = [UIFont fontWithName:@"Helvetica" size:14.0];}

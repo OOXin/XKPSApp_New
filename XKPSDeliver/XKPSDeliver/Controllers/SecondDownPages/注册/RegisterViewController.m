@@ -116,14 +116,13 @@
     tipInfoTv.textColor = LIGHT_GRAY_COLOR;
     [footerView addSubview:tipInfoTv];
     
-    
     HCCommonItem *registerItem = [HCCommonItem associateObject:footerView withKey:@"registerView"];
     
     [group.items addObjectsFromArray:@[nameItem,sexItem,IDItem,phoneItem,passwordItem,confirmPwItem,cityItem,departMentItem,registerItem]];
 }
 
 - (void)getData{
-    [NetManager getRequestWithUrl:__RegisterConfigs param:nil addProgressHudOn:self.view Tip:@"获取信息" successReturn:^(id successReturn){
+    [NetManager getRequestWithUrl:__RegisterConfigs param:nil addProgressHudOn:nil Tip:nil successReturn:^(id successReturn){
         NSDictionary *jsonDict =[NSJSONSerialization JSONObjectWithData:[[NSJSONSerialization JSONObjectWithData:successReturn options:NSJSONReadingAllowFragments error:nil]dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingAllowFragments error:nil];
         NSDictionary *dict = [jsonDict valueForKey:@"data"];
         self.model = [RegisterDataModel mj_objectWithKeyValues:dict];
@@ -131,7 +130,7 @@
         NSLog(@"dict=%@",dict);
         [self.tableView reloadData];
     } failed:^(id failed) {
-        
+
     }];
 }
 
@@ -144,73 +143,70 @@
     
     [contentDic setObject:date forKey:@"time"];
     
-    if (nameItem.subTitle.length<=0) {
-        ALERT_HUD(self.view, @"请输入姓名");
-        return;
-    }else{
-        [contentDic setObject:nameItem.subTitle forKey:@"driverName"];
-    }
-    
-    [contentDic setObject:@(sexItem.switchFlag) forKey:@"driverSex"];
-    if (IDItem.subTitle.length<=0) {
-        ALERT_HUD(self.view, @"请输入身份证号");
-        return;
-    }else{
-        if ([[SystemConfig sharedSystemConfig]validateIDCardNumber:IDItem.subTitle]) {
-            [contentDic setObject:IDItem.subTitle forKey:@"idcardNumber"];
-        }else{
-            MBProgressHUD *hud = [[MBProgressHUD alloc]init];
-            hud.offset = CGPointMake(0, 5);
-            ALERT_HUD(self.node.view, @"身份证号输入有误");
-            return;
-        }
-    }
-    if (phoneItem.subTitle.length<=0||phoneItem.subTitle.length>11) {
-        ALERT_HUD(self.node.view, @"请输入电话");
-        return;
-    }else{
-        [contentDic setObject:phoneItem.subTitle forKey:@"cellPhone"];
-    }
-    if (passwordItem.subTitle.length<=0) {
-        ALERT_HUD(self.node.view, @"填写密码");
-        return;
-    }else{
-        [contentDic setObject:passwordItem.subTitle forKey:@"driverPwd"];
-    }
-    if (confirmPwItem.subTitle.length<=0) {
-        ALERT_HUD(self.node.view, @"请再次输入密码");
-        return;
-    }
-    if (![confirmPwItem.subTitle isEqualToString:passwordItem.subTitle]) {
-        ALERT_HUD(self.node.view, @"密码不一致，请重新输入");
-        return;
-    }
-    if (cityItem.popOptionIndex <= 0) {
-       
-        ALERT_HUD(self.node.view, @"请选择城市");
-        return;
-    }else{
-        [contentDic setObject:self.model.dataKeyArray[0][cityItem.popOptionIndex-1] forKey:@"cityId"];
-    }
-    if (departMentItem.popOptionIndex == 0) {
-        ALERT_HUD(self.node.view, @"请选择部门");
-        return;
-    }else{
-        [contentDic setObject:self.model.dataKeyArray[1][departMentItem.popOptionIndex-1] forKey:@"companyId"];
-    }
+//    if (nameItem.subTitle.length<=0) {
+//        ALERT_HUD(self.view, @"请输入姓名");
+//        return;
+//    }else{
+//        [contentDic setObject:nameItem.subTitle forKey:@"driverName"];
+//    }
+//    
+//    [contentDic setObject:@(sexItem.switchFlag) forKey:@"driverSex"];
+//    if (IDItem.subTitle.length<=0) {
+//        ALERT_HUD(self.view, @"请输入身份证号");
+//        return;
+//    }else{
+//        if ([[SystemConfig sharedSystemConfig]validateIDCardNumber:IDItem.subTitle]) {
+//            [contentDic setObject:IDItem.subTitle forKey:@"idcardNumber"];
+//        }else{
+//            MBProgressHUD *hud = [[MBProgressHUD alloc]init];
+//            hud.offset = CGPointMake(0, 5);
+//            ALERT_HUD(self.node.view, @"身份证号输入有误");
+//            return;
+//        }
+//    }
+//    if (phoneItem.subTitle.length<=0||phoneItem.subTitle.length>11) {
+//        ALERT_HUD(self.node.view, @"请输入电话");
+//        return;
+//    }else{
+//        [contentDic setObject:phoneItem.subTitle forKey:@"cellPhone"];
+//    }
+//    if (passwordItem.subTitle.length<=0) {
+//        ALERT_HUD(self.node.view, @"填写密码");
+//        return;
+//    }else{
+//        [contentDic setObject:passwordItem.subTitle forKey:@"driverPwd"];
+//    }
+//    if (confirmPwItem.subTitle.length<=0) {
+//        ALERT_HUD(self.node.view, @"请再次输入密码");
+//        return;
+//    }
+//    if (![confirmPwItem.subTitle isEqualToString:passwordItem.subTitle]) {
+//        ALERT_HUD(self.node.view, @"密码不一致，请重新输入");
+//        return;
+//    }
+//    if (cityItem.popOptionIndex <= 0) {
+//       
+//        ALERT_HUD(self.node.view, @"请选择城市");
+//        return;
+//    }else{
+//        [contentDic setObject:self.model.dataKeyArray[0][cityItem.popOptionIndex-1] forKey:@"cityId"];
+//    }
+//    if (departMentItem.popOptionIndex == 0) {
+//        ALERT_HUD(self.node.view, @"请选择部门");
+//        return;
+//    }else{
+//        [contentDic setObject:self.model.dataKeyArray[1][departMentItem.popOptionIndex-1] forKey:@"companyId"];
+//    }
     [NetManager postRequestWithUrl:__RegisterSubmits param:contentDic addProgressHudOn:self.view Tip:@"上传数据中" successReturn:^(id successReturn) {
         NSLog(@"success return=%@",successReturn);
-
         ALERT_HUD(self.view, @"注册成功");
         if (successReturn) {
             [[SystemConfig sharedSystemConfig]saveUserName:phoneItem.subTitle];
             [[SystemConfig sharedSystemConfig]saveUserPwd:passwordItem.subTitle];
+            [self dismissViewControllerAnimated:YES completion:nil];
             if (self.successRegist) {
                 self.successRegist();
-                [self.navigationController popViewControllerAnimated:YES];
-                
             }
- 
         }
         
     } failed:^(id failed) {

@@ -20,11 +20,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "XKPSDeliver/Controllers/SecondDownPages/&#x6ce8;&#x518c;/RegisterViewController.m"
-            timestampString = "510562216.345682"
+            timestampString = "510570434.340341"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "202"
-            endingLineNumber = "202"
+            startingLineNumber = "201"
+            endingLineNumber = "201"
             landmarkName = "-registerClient"
             landmarkType = "7">
          </BreakpointContent>
@@ -35,13 +35,141 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "XKPSDeliver/Controllers/RootViewController/RootViewController.m"
-            timestampString = "510562078.266325"
+            filePath = "XKPSDeliver/Controllers/LoginPage/Login/LoginViewController.m"
+            timestampString = "510566304.042921"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "79"
-            endingLineNumber = "79"
-            landmarkName = "-viewWillAppear:"
+            startingLineNumber = "197"
+            endingLineNumber = "197"
+            landmarkName = "-login"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "XKPSDeliver/Controllers/SecondDownPages/&#x6ce8;&#x518c;/RegisterViewController.m"
+            timestampString = "510570434.340341"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "129"
+            endingLineNumber = "129"
+            landmarkName = "-getData"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "XKPSDeliver/Controllers/SecondDownPages/&#x6ce8;&#x518c;/RegisterViewController.m"
+            timestampString = "510570434.340341"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
+            landmarkName = "-configGroupItems"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "XKPSDeliver/Controllers/form/HCDistributeSpaceViewController.m"
+            timestampString = "510569832.839311"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
+            landmarkName = "-numberOfSectionsInTableView:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "XKPSDeliver/Controllers/form/HCDistributeSpaceViewController.m"
+            timestampString = "510569832.839311"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "66"
+            endingLineNumber = "66"
+            landmarkName = "-tableView:numberOfRowsInSection:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "XKPSDeliver/Controllers/SecondDownPages/&#x6ce8;&#x518c;/RegisterViewController.m"
+            timestampString = "510626015.705824"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "202"
+            endingLineNumber = "202"
+            landmarkName = "-registerClient"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__40-[RegisterViewController registerClient]_block_invoke"
+                  moduleName = "XKPSDeliver"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ccSunday/Documents/doc/%E9%87%8D%E6%9E%84%E4%BE%A0%E5%AE%A2%E9%85%8D%E9%80%81/XKPSDeliver/XKPSDeliver/Controllers/SecondDownPages/%E6%B3%A8%E5%86%8C/RegisterViewController.m"
+                  timestampString = "510626700.096231"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "202"
+                  endingLineNumber = "202"
+                  offsetFromSymbolStart = "336">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__40-[RegisterViewController registerClient]_block_invoke"
+                  moduleName = "XKPSDeliver"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ccSunday/Documents/doc/%E9%87%8D%E6%9E%84%E4%BE%A0%E5%AE%A2%E9%85%8D%E9%80%81/XKPSDeliver/XKPSDeliver/Controllers/SecondDownPages/%E6%B3%A8%E5%86%8C/RegisterViewController.m"
+                  timestampString = "510626700.097822"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "202"
+                  endingLineNumber = "202"
+                  offsetFromSymbolStart = "1024">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "XKPSDeliver/AppDelegate.m"
+            timestampString = "510626265.881493"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "64"
+            endingLineNumber = "64"
+            landmarkName = "-addAdvertiseMentView"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

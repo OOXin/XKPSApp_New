@@ -49,7 +49,6 @@
 }
 
 - (void)setupSubviews{
-    
     //标题
     _titleView = [UILabel labelWithFont:GetFont(14) textColor:DarkTextColor];
     [self.contentView addSubview:_titleView];

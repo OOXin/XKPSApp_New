@@ -19,6 +19,7 @@
 		162AF2E31E4ED643006140B8 /* XKPSDeliverUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 162AF2E21E4ED643006140B8 /* XKPSDeliverUITests.m */; };
 		162CA6A11E64208A00788CB7 /* OrderList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 162CA6A01E64208A00788CB7 /* OrderList.plist */; };
 		162F88431E6E87CA00997C09 /* SystemConfig.h in Sources */ = {isa = PBXBuildFile; fileRef = 16553F531E5FF3CF0078C585 /* SystemConfig.h */; };
+		162F88461E6E9BAD00997C09 /* SystemSetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 162F88451E6E9BAD00997C09 /* SystemSetViewController.m */; };
 		165063371E68FB2A00F775DD /* XKS_RefreshGifHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 165063361E68FB2A00F775DD /* XKS_RefreshGifHeader.m */; };
 		1650633A1E68FDAD00F775DD /* XKS_RefreshGifFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 165063391E68FDAD00F775DD /* XKS_RefreshGifFooter.m */; };
 		16553F551E5FF3CF0078C585 /* SystemConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 16553F541E5FF3CF0078C585 /* SystemConfig.m */; };
@@ -48,7 +49,6 @@
 		1674479D1E5EE63B002DB072 /* OrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1674479C1E5EE63B002DB072 /* OrderViewController.m */; };
 		167447A01E5EE67D002DB072 /* AccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1674479F1E5EE67D002DB072 /* AccountViewController.m */; };
 		167447A31E5EE688002DB072 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 167447A21E5EE688002DB072 /* MapViewController.m */; };
-		167447A61E5EE692002DB072 /* SystemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 167447A51E5EE692002DB072 /* SystemViewController.m */; };
 		16B2FFC51E64230D00AB68E3 /* OrderListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B2FFC41E64230D00AB68E3 /* OrderListModel.m */; };
 		16B2FFD21E64504900AB68E3 /* XKS_AdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B2FFCF1E64504900AB68E3 /* XKS_AdViewController.m */; };
 		16B2FFD31E64504900AB68E3 /* XKS_LaunchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B2FFD11E64504900AB68E3 /* XKS_LaunchView.m */; };
@@ -121,6 +121,8 @@
 		162AF2E21E4ED643006140B8 /* XKPSDeliverUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XKPSDeliverUITests.m; sourceTree = "<group>"; };
 		162AF2E41E4ED643006140B8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		162CA6A01E64208A00788CB7 /* OrderList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = OrderList.plist; sourceTree = "<group>"; };
+		162F88441E6E9BAD00997C09 /* SystemSetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SystemSetViewController.h; sourceTree = "<group>"; };
+		162F88451E6E9BAD00997C09 /* SystemSetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SystemSetViewController.m; sourceTree = "<group>"; };
 		165063351E68FB2A00F775DD /* XKS_RefreshGifHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XKS_RefreshGifHeader.h; sourceTree = "<group>"; };
 		165063361E68FB2A00F775DD /* XKS_RefreshGifHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XKS_RefreshGifHeader.m; sourceTree = "<group>"; };
 		165063381E68FDAD00F775DD /* XKS_RefreshGifFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XKS_RefreshGifFooter.h; sourceTree = "<group>"; };
@@ -178,8 +180,6 @@
 		1674479F1E5EE67D002DB072 /* AccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountViewController.m; sourceTree = "<group>"; };
 		167447A11E5EE688002DB072 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
 		167447A21E5EE688002DB072 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
-		167447A41E5EE692002DB072 /* SystemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SystemViewController.h; sourceTree = "<group>"; };
-		167447A51E5EE692002DB072 /* SystemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SystemViewController.m; sourceTree = "<group>"; };
 		168E2B3E1E6D4A28002160C4 /* NetWorkConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetWorkConstants.h; sourceTree = "<group>"; };
 		16B2FFC31E64230D00AB68E3 /* OrderListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderListModel.h; sourceTree = "<group>"; };
 		16B2FFC41E64230D00AB68E3 /* OrderListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderListModel.m; sourceTree = "<group>"; };
@@ -450,8 +450,8 @@
 		16553F6F1E60290C0078C585 /* System */ = {
 			isa = PBXGroup;
 			children = (
-				167447A41E5EE692002DB072 /* SystemViewController.h */,
-				167447A51E5EE692002DB072 /* SystemViewController.m */,
+				162F88441E6E9BAD00997C09 /* SystemSetViewController.h */,
+				162F88451E6E9BAD00997C09 /* SystemSetViewController.m */,
 			);
 			name = System;
 			sourceTree = "<group>";
@@ -995,8 +995,8 @@
 				16D351DD1E6E3E1A0015B8A6 /* SimpleSwitch.m in Sources */,
 				16D351D51E6E3D850015B8A6 /* HCDistributeTestViewController.m in Sources */,
 				16553F551E5FF3CF0078C585 /* SystemConfig.m in Sources */,
-				167447A61E5EE692002DB072 /* SystemViewController.m in Sources */,
 				16D351CD1E6E3D850015B8A6 /* HCBaseItem.m in Sources */,
+				162F88461E6E9BAD00997C09 /* SystemSetViewController.m in Sources */,
 				167447A01E5EE67D002DB072 /* AccountViewController.m in Sources */,
 				16553F591E5FFB480078C585 /* XKS_NavigationController.m in Sources */,
 				167447841E5ECE88002DB072 /* AppDelegate+BPush.m in Sources */,

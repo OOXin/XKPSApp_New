@@ -8,6 +8,20 @@
 
 #import "LoginViewController.h"
 #import "RegisterViewController.h"
+
+//login
+#define ifsuccess               @"r"
+#define sleepTime               @"m"
+#define companyTelephone        @"t"
+#define onlineStatus            @"s"
+#define poistionOffsetPeriod    @"pot"
+#define sessionTime             @"sessionTimeout"
+
+//status
+#define _status_online_ @"在线"
+#define _status_rest_   @"休息"
+#define _status_quit_   @"收工"
+
 @interface LoginViewController ()
 {
     
@@ -85,6 +99,7 @@
     //电话输入框
     _phoneTextField = [[UITextField alloc]initWithFrame:CGRectMake(44, 0, _phoneImgNode.view.width-88, 44)];
     _phoneTextField.userInteractionEnabled = YES;
+    _phoneTextField.placeholder = @"账户名称";
     _phoneTextField.textColor = LIGHT_WHITE_COLOR;
     _phoneTextField.font = GetFont(16);
     _phoneTextField.jk_maxLength = 11;
@@ -111,6 +126,7 @@
     //密码输入框
     _passwordTextField = [[UITextField alloc]init];
     _passwordTextField.frame = CGRectMake(44, 0, _passwordImgNode.view.width-88, 44);
+    _passwordTextField.placeholder = @"输入密码";
     _passwordTextField.font = GetFont(16);
     _passwordTextField.textColor = LIGHT_WHITE_COLOR;
     _passwordTextField.secureTextEntry = YES;
@@ -181,9 +197,51 @@
         NSLog(@"successreturn%@",successReturn);
         NSDictionary *responseJSON = [NSJSONSerialization JSONObjectWithData:successReturn options:NSJSONReadingMutableLeaves error:nil];
         NSLog(@"jsondict=%@",responseJSON);
-        [self dismissController];
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        [self XKS_dismissController];
         if (self.SuccessLogin) {
             self.SuccessLogin();
+        }
+        return ;
+
+        
+        if ([[responseJSON valueForKey:ifsuccess]isEqualToString:@"1"]) {
+            
+            [[SystemConfig sharedSystemConfig]saveLoginTime:[NSString stringWithFormat:@"%@",[NSDate date]]];
+            [[NSUserDefaults standardUserDefaults]setValue:[NSDate date] forKey:@"uploadtime"];
+            
+            [[SystemConfig sharedSystemConfig]saveOnlineStatus:[responseJSON valueForKey:_ONLINE_STATUS_]];
+            [[SystemConfig sharedSystemConfig]saveUserStatus:_status_online_];
+            
+            [[SystemConfig sharedSystemConfig]saveSleepTime:[responseJSON valueForKey:_SLEEP_TIME_]];
+            [[SystemConfig sharedSystemConfig]saveServiceNumber:[responseJSON valueForKey:_SERVICE_NUMBER_]];
+            [[SystemConfig sharedSystemConfig]savePositionOffsetPeriod:[responseJSON valueForKey:_POSITION_OFFSET_PERIOD_]];
+            [[SystemConfig sharedSystemConfig]saveSessionTimeOut:[responseJSON valueForKey:_SESSIOIN_TIMEOUT_]];
+            [self XKS_dismissController];
+            
+            if (self.SuccessLogin) {
+                self.SuccessLogin();
+            }
+        }
+        else if ([[responseJSON valueForKey:ifsuccess]isEqualToString:@"74"])
+        {
+            ALERT_VIEW(@"您被禁止登陆，详情请咨询客服,客服电话：进入绑定手机页面点击右上角");
+        }
+        else if ([[responseJSON valueForKey:ifsuccess]isEqualToString:@"-1331"])
+        {
+            ALERT_VIEW(@"不匹配的IMEI码，请绑定当前手机或使用已绑定手机");
+        }
+        else if ([[responseJSON valueForKey:ifsuccess]isEqualToString:@"-1333"])
+        {
+            ALERT_VIEW(@"请绑定手机");
+        }
+        else if ([[responseJSON valueForKey:ifsuccess]isEqualToString:@"4"])
+        {
+            ALERT_VIEW(@"错误的登录名或密码");
+        }
+        else if ([[responseJSON valueForKey:ifsuccess]isEqualToString:@"-1332"])
+        {
+            ALERT_VIEW(@"未提交IMEI码");
         }
     } failed:^(id failedReturn) {
         
@@ -203,5 +261,4 @@
     // Pass the selected object to the new view controller.
 }
 */
-
 @end

@@ -13,7 +13,7 @@
 #import "HCDistributeSpaceHeaderView.h"
 #import "HCTextViewCell.h"
 #import "HCCommonCell.h"
-#import "common.h"
+
 static CGFloat padding = 12.f;
 
 
@@ -22,6 +22,12 @@ static CGFloat padding = 12.f;
 @end
 
 @implementation HCDistributeSpaceViewController
+- (instancetype)init{
+    if (self = [super init]) {
+        
+    }
+    return self;
+}
 
 - (void)viewDidLoad{
     [super viewDidLoad];

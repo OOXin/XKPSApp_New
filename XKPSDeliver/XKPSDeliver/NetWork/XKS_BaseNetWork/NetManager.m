@@ -47,6 +47,8 @@
         if (successReturn) {
             successReturn(responseObject);
         }
+        [[targetview subviews]lastObject].hidden = YES;
+
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         // 请求失败
         if (failed) {

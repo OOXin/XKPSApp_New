@@ -11,7 +11,7 @@
 #import "OrderViewController.h"
 #import "AccountViewController.h"
 #import "MapViewController.h"
-#import "SystemViewController.h"
+#import "SystemSetViewController.h"
 
 #import "OrderViewModel.h"
 
@@ -84,7 +84,7 @@
         MapViewController *mapVC = [[MapViewController alloc]init];
         [_tabbarItems addObject:[self addOneChildViewController:mapVC withTitle:@"地图" norImage:@"map_unselected" selImage:@"map_selected"]];
         //系统
-        SystemViewController *systemVC = [[SystemViewController alloc]init];
+        SystemSetViewController *systemVC = [[SystemSetViewController alloc]init];
         [_tabbarItems addObject:[self addOneChildViewController:systemVC withTitle:@"系统" norImage:@"system_unselected" selImage:@"system_selected"]];
     }
     
